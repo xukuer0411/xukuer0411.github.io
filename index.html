@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿卜杜许库尔·玻拉提 - 个人主页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* 优化导航栏样式 - 独立按钮设计 */
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            padding: 0;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 80px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--light-color);
+            display: flex;
+            align-items: center;
+            padding: 5px 15px;
+            border-radius: var(--border-radius);
+            background: rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+            margin-left: 5px;
+        }
+        
+        nav {
+            display: flex;
+            flex: 1;
+            justify-content: flex-end;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav li {
+            margin-left: 10px;
+        }
+        
+        /* 独立按钮样式 */
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 18px;
+            display: block;
+            transition: var(--transition);
+            position: relative;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            min-width: 80px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 为每个按钮设置不同的悬停颜色 */
+        nav a[data-page="home"]:hover {
+            background-color: #3498db;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
+        }
+        
+        nav a[data-page="hometown"]:hover {
+            background-color: #2ecc71;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(46, 204, 113, 0.3);
+        }
+        
+        nav a[data-page="hobbies"]:hover {
+            background-color: #9b59b6;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(155, 89, 182, 0.3);
+        }
+        
+        nav a[data-page="travel"]:hover {
+            background-color: #f39c12;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(243, 156, 18, 0.3);
+        }
+        
+        nav a[data-page="message"]:hover {
+            background-color: #1abc9c;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(26, 188, 156, 0.3);
+        }
+        
+        nav a[data-page="login"]:hover {
+            background-color: #e74c3c;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(231, 76, 60, 0.3);
+        }
+        
+        nav a[data-page="register"]:hover {
+            background-color: #34495e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(52, 73, 94, 0.3);
+        }
+        
+        nav a.active {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* 为每个按钮设置不同的活动状态颜色 */
+        nav a[data-page="home"].active {
+            background-color: #2980b9;
+        }
+        
+        nav a[data-page="hometown"].active {
+            background-color: #27ae60;
+        }
+        
+        nav a[data-page="hobbies"].active {
+            background-color: #8e44ad;
+        }
+        
+        nav a[data-page="travel"].active {
+            background-color: #e67e22;
+        }
+        
+        nav a[data-page="message"].active {
+            background-color: #16a085;
+        }
+        
+        nav a[data-page="login"].active {
+            background-color: #c0392b;
+        }
+        
+        nav a[data-page="register"].active {
+            background-color: #2c3e50;
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 3px;
+            background-color: white;
+            border-radius: 3px;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+        
+        .mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* 主要内容区域 */
+        main {
+            margin-top: 90px;
+            min-height: calc(100vh - 160px);
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* 首页样式 */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 40px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 50%;
+            box-shadow: var(--shadow);
+            border: 5px solid white;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin: 20px 0;
+            color: var(--primary-color);
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            margin: 15px 0;
+            color: var(--dark-color);
+        }
+        
+        .highlight {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            margin-top: 15px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+        
+        /* 卡片样式 */
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 兴趣爱好页面样式 */
+        .hobby-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .hobby-item {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .hobby-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .hobby-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        /* 家乡页面样式 - 优化 */
+        .hometown-intro {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .hometown-img {
+            flex: 1;
+            min-width: 300px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .hometown-img img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .hometown-img:hover img {
+            transform: scale(1.1);
+        }
+        
+        .hometown-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        /* 新疆景区展示 */
+        .scenic-spots {
+            margin-top: 40px;
+        }
+        
+        .scenic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .scenic-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .scenic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .scenic-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .scenic-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .scenic-card:hover .scenic-img img {
+            transform: scale(1.1);
+        }
+        
+        .scenic-content {
+            padding: 20px;
+        }
+        
+        .scenic-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .scenic-desc {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .best-time {
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        
+        .best-time i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* 旅游记录页面样式 */
+        .travel-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .travel-item {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .travel-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .travel-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .travel-desc {
+            padding: 15px;
+            background-color: white;
+        }
+        
+        /* 留言板样式 */
+        .message-form {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .message-list {
+            margin-top: 30px;
+        }
+        
+        .message-item {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .message-item:hover {
+            transform: translateX(5px);
+        }
+        
+        /* 登录注册页面样式 */
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+        }
+        
+        .auth-form {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        
+        .social-links {
+            margin: 15px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .nav-container {
+                padding: 0 15px;
+            }
+            
+            nav a {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+                min-width: 70px;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+                padding: 5px 12px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                height: 70px;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: var(--secondary-color);
+                display: none;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+            
+            nav.active {
+                display: flex;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            nav li {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+            
+            nav a {
+                padding: 15px;
+                border-radius: 6px;
+                width: 100%;
+                text-align: left;
+                display: flex;
+                align-items: center;
+            }
+            
+            nav a::before {
+                content: '';
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+                background-color: rgba(255, 255, 255, 0.2);
+                border-radius: 4px;
+            }
+            
+            /* 移动端每个按钮的图标 */
+            nav a[data-page="home"]::before {
+                background-color: #2980b9;
+            }
+            
+            nav a[data-page="hometown"]::before {
+                background-color: #27ae60;
+            }
+            
+            nav a[data-page="hobbies"]::before {
+                background-color: #8e44ad;
+            }
+            
+            nav a[data-page="travel"]::before {
+                background-color: #e67e22;
+            }
+            
+            nav a[data-page="message"]::before {
+                background-color: #16a085;
+            }
+            
+            nav a[data-page="login"]::before {
+                background-color: #c0392b;
+            }
+            
+            nav a[data-page="register"]::before {
+                background-color: #2c3e50;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            main {
+                margin-top: 80px;
+            }
+            
+            .hero {
+                flex-direction: column;
+            }
+            
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .scenic-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 - 独立按钮设计 -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">阿卜杜许库尔<span>&nbsp;</span></div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home" class="nav-link active" data-page="home"><i class="fas fa-home"></i><span class="btn-text">首页</span></a></li>
+                    <li><a href="#hometown" class="nav-link" data-page="hometown"><i class="fas fa-landmark"></i><span class="btn-text">我的家乡</span></a></li>
+                    <li><a href="#hobbies" class="nav-link" data-page="hobbies"><i class="fas fa-heart"></i><span class="btn-text">兴趣爱好</span></a></li>
+                    <li><a href="#travel" class="nav-link" data-page="travel"><i class="fas fa-plane"></i><span class="btn-text">旅游记录</span></a></li>
+                    <li><a href="#message" class="nav-link" data-page="message"><i class="fas fa-comments"></i><span class="btn-text">留言板</span></a></li>
+                    <li><a href="#login" class="nav-link" data-page="login"><i class="fas fa-sign-in-alt"></i><span class="btn-text">登录</span></a></li>
+                    <li><a href="#register" class="nav-link" data-page="register"><i class="fas fa-user-plus"></i><span class="btn-text">注册</span></a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main>
+        <!-- 首页 -->
+        <section id="home" class="page active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>阿卜杜许库尔·玻拉提</h1>
+                    <p class="highlight">阿克苏职业技术学院 · 现代纺织技术专业</p>
+                    <p>你好！我是阿卜杜许库尔·玻拉提，一名热爱设计与技术的学生。我来自美丽的新疆喀什，目前就读于阿克苏职业技术学院，学习现代纺织技术。我对网页设计、房屋设计和平面设计有浓厚的兴趣，也喜欢在篮球场上挥洒汗水，用相机记录生活的美好瞬间。</p>
+                    <p>这个网站展示了我个人信息的方方面面，包括我的家乡、兴趣爱好、旅游经历等。欢迎浏览并给我留言！</p>
+                    <a href="#hometown" class="btn nav-link" data-page="hometown">了解我的家乡</a>
+                </div>
+                <div class="hero-image">
+                    <img src="xukuer.jpg" alt="阿卜杜许库尔·玻拉提" width="300">
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>个人信息</h2>
+                <div class="info-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
+                    <div class="info-item">
+                        <h3>基本信息</h3>
+                        <p><strong>姓名：</strong>阿卜杜许库尔·玻拉提</p>
+                        <p><strong>年龄：</strong>19岁</p>
+                        <p><strong>性别：</strong>男</p>
+                        <p><strong>民族：</strong>维吾尔族</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>教育信息</h3>
+                        <p><strong>学校：</strong>阿克苏职业技术学院</p>
+                        <p><strong>专业：</strong>现代纺织技术</p>
+                        <p><strong>学号：</strong>88888888</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>联系信息</h3>
+                        <p><strong>家乡：</strong>新疆喀什</p>
+                        <p><strong>邮箱：</strong>abdushukur@example.com</p>
+                        <p><strong>电话：</strong>138-8888-8888</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 我的家乡 -->
+        <section id="hometown" class="page">
+            <h2>我的家乡 - 新疆喀什</h2>
+            <div class="hometown-intro">
+                <div class="hometown-img">
+                    <img src="喀什.png" alt="喀什风光">
+                </div>
+                <div class="hometown-info card">
+                    <h3>喀什简介</h3>
+                    <p>喀什位于新疆西南部，是中国最西端的一座城市，有着2000多年的历史。喀什是古丝绸之路上的重要枢纽，东西方文化在这里交汇融合，形成了独特的文化景观。</p>
+                    <p>喀什老城是世界上现存规模最大的生土建筑群之一，巷道纵横交错，布局灵活多变，曲径通幽，民居大多为土木、砖木结构，不少传统民居已有上百年的历史，具有独特的民俗风情。</p>
+                    
+                    <h3>喀什特色</h3>
+                    <ul>
+                        <li><strong>喀什老城：</strong>拥有悠久历史的传统维吾尔族居住区</li>
+                        <li><strong>艾提尕尔清真寺：</strong>新疆规模最大的清真寺</li>
+                        <li><strong>香妃墓：</strong></li>
+                        <li><strong>喀什大巴扎：</strong>中亚地区最大的集市</li>
+                        <li><strong>特色美食：</strong>烤包子、抓饭、烤全羊、拉条子等</li>
+                    </ul>
+                    
+                    <p>作为土生土长的喀什人，我深爱着这片土地和这里的文化。每当向人介绍我的家乡，我总感到无比自豪。</p>
+                </div>
+            </div>
+            
+            <div class="scenic-spots">
+                <h2>新疆著名景区</h2>
+                <p class="subtitle">新疆拥有众多令人叹为观止的自然和人文景观</p>
+                
+                <div class="scenic-grid">
+                    <!-- 天山天池 -->
+                    <div class="scenic-card">
+                        <div class="scenic-img">
+                            <img src="天山天池.png" alt="天山天池">
+                        </div>
+                        <div class="scenic-content">
+                            <h3 class="scenic-title">天山天池</h3>
+                            <p class="scenic-desc">天山天池位于新疆昌吉州阜康市，是一个高山湖泊，海拔1910米。湖水清澈见底，四周雪山环绕，景色壮丽。传说天池是西王母的瑶池，有着丰富的神话传说。</p>
+                            <div class="best-time">
+                                <i class="fas fa-calendar-alt"></i>
+                                <div>
+                                    <strong>最佳旅游时间：</strong>6月-9月<br>
+                                    <small>夏季气候凉爽，湖水清澈，风景最美</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 喀纳斯湖 -->
+                    <div class="scenic-card">
+                        <div class="scenic-img">
+                            <img src="喀纳斯湖.jpg" alt="喀纳斯湖">
+                        </div>
+                        <div class="scenic-content">
+                            <h3 class="scenic-title">喀纳斯湖</h3>
+                            <p class="scenic-desc">喀纳斯湖位于阿勒泰地区，是中国最深的冰碛堰塞湖，湖水随季节和天气变化颜色，神秘的"湖怪"传说更添神秘色彩。秋季的喀纳斯湖，层林尽染，美不胜收。</p>
+                            <div class="best-time">
+                                <i class="fas fa-calendar-alt"></i>
+                                <div>
+                                    <strong>最佳旅游时间：</strong>6月-9月，9月下旬-10月上旬<br>
+                                    <small>夏季凉爽宜人，秋季色彩斑斓</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 吐鲁番火焰山 -->
+                    <div class="scenic-card">
+                        <div class="scenic-img">
+                            <img src="火焰山.png" alt="吐鲁番火焰山">
+                        </div>
+                        <div class="scenic-content">
+                            <h3 class="scenic-title">吐鲁番火焰山</h3>
+                            <p class="scenic-desc">火焰山位于吐鲁番盆地，是中国最热的地方，夏季气温可达47℃以上。因《西游记》中孙悟空三借芭蕉扇的故事而闻名。山体呈红色，在阳光照射下犹如燃烧的火焰。</p>
+                            <div class="best-time">
+                                <i class="fas fa-calendar-alt"></i>
+                                <div>
+                                    <strong>最佳旅游时间：</strong>4月-5月，9月-10月<br>
+                                    <small>避开夏季极端高温，春秋季气候较为舒适</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 那拉提草原 -->
+                    <div class="scenic-card">
+                        <div class="scenic-img">
+                            <img src="那拉提.jpg" alt="那拉提草原">
+                        </div>
+                        <div class="scenic-content">
+                            <h3 class="scenic-title">那拉提草原</h3>
+                            <p class="scenic-desc">那拉提草原位于伊犁河谷，是世界四大草原之一。这里水草丰美，草原辽阔，风景如画。夏季草原上开满各种野花，牛羊成群，毡房点点，宛如仙境。</p>
+                            <div class="best-time">
+                                <i class="fas fa-calendar-alt"></i>
+                                <div>
+                                    <strong>最佳旅游时间：</strong>6月-9月<br>
+                                    <small>夏季草原最美，气候凉爽，适合避暑</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 喀什老城 -->
+                    <div class="scenic-card">
+                        <div class="scenic-img">
+                            <img src="喀什.jpg" alt="喀什老城">
+                        </div>
+                        <div class="scenic-content">
+                            <h3 class="scenic-title">喀什老城</h3>
+                            <p class="scenic-desc">喀什老城是世界上现存规模最大的生土建筑群之一，已有2000多年历史。巷道纵横交错，布局灵活多变，民居大多为土木结构，具有独特的维吾尔族民俗风情。</p>
+                            <div class="best-time">
+                                <i class="fas fa-calendar-alt"></i>
+                                <div>
+                                    <strong>最佳旅游时间：</strong>4月-6月，9月-10月<br>
+                                    <small>春秋季气候宜人，适合游览老城建筑和文化</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 巴音布鲁克草原 -->
+                    <div class="scenic-card">
+                        <div class="scenic-img">
+                            <img src="bain.jpg" alt="巴音布鲁克草原">
+                        </div>
+                        <div class="scenic-content">
+                            <h3 class="scenic-title">巴音布鲁克草原</h3>
+                            <p class="scenic-desc">巴音布鲁克草原位于天山山脉中段，是中国第二大草原。这里地势平坦，水草丰美，有"九曲十八弯"的开都河，日落时分景色尤为壮观，是摄影爱好者的天堂。</p>
+                            <div class="best-time">
+                                <i class="fas fa-calendar-alt"></i>
+                                <div>
+                                    <strong>最佳旅游时间：</strong>6月-9月<br>
+                                    <small>夏季草原最美，气候凉爽，适合避暑和摄影</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card" style="margin-top: 40px;">
+                <h3>新疆旅游小贴士</h3>
+                <p>新疆地域辽阔，景点之间距离较远，建议合理安排行程。由于新疆与内地有时差，当地作息时间比内地晚2小时左右。新疆气候干燥，紫外线较强，请注意防晒和补水。尊重当地少数民族风俗习惯，特别是进入清真寺等宗教场所时。</p>
+                <p>新疆美食丰富多样，烤羊肉串、抓饭、拉条子、烤包子等都是不容错过的美食。新疆瓜果特别甜美，尤其是吐鲁番的葡萄、哈密的瓜，一定要品尝。</p>
+            </div>
+        </section>
+
+        <!-- 兴趣爱好 -->
+        <section id="hobbies" class="page">
+            <h2>兴趣爱好</h2>
+            <p class="subtitle">我喜欢探索各种创意领域，也享受运动的乐趣</p>
+            
+            <div class="hobby-grid">
+                <div class="hobby-item">
+                    <div class="hobby-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>网页设计</h3>
+                    <p>我喜欢用HTML、CSS和JavaScript创建美观且功能强大的网站，探索用户体验与视觉设计的平衡。</p>
+                </div>
+                
+                <div class="hobby-item">
+                    <div class="hobby-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>房屋设计</h3>
+                    <p>对室内设计和建筑布局有浓厚兴趣，喜欢研究空间利用和家居美学。</p>
+                </div>
+                
+                <div class="hobby-item">
+                    <div class="hobby-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>平面设计</h3>
+                    <p>运用Photoshop、Illustrator等工具进行创意设计，包括海报、Logo和品牌视觉设计。</p>
+                </div>
+                
+                <div class="hobby-item">
+                    <div class="hobby-icon">
+                        <i class="fas fa-basketball-ball"></i>
+                    </div>
+                    <h3>打篮球</h3>
+                    <p>篮球是我最爱的运动，喜欢在球场上与朋友竞技，享受团队合作和运动带来的快乐。</p>
+                </div>
+                
+                <div class="hobby-item">
+                    <div class="hobby-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>拍照</h3>
+                    <p>用相机记录生活中的美好瞬间，特别擅长人像摄影和风景摄影。</p>
+                </div>
+                
+                <div class="hobby-item">
+                    <div class="hobby-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>剪辑</h3>
+                    <p>使用Premiere Pro和Final Cut Pro等软件进行视频剪辑，制作有故事感的短片和Vlog。</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>技能与专长</h3>
+                <p>基于我的兴趣爱好，我发展了一些专业技能：</p>
+                <ul>
+                    <li><strong>设计软件：</strong>Photoshop, Illustrator, Figma, Sketch</li>
+                    <li><strong>网页技术：</strong>HTML, CSS, JavaScript, React基础</li>
+                    <li><strong>视频编辑：</strong>Premiere Pro, Final Cut Pro, DaVinci Resolve</li>
+                    <li><strong>专业相关：</strong>纺织设计软件，面料知识，纺织工艺</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 旅游记录 -->
+        <section id="travel" class="page">
+            <h2>旅游记录</h2>
+            <p class="subtitle">我喜欢探索不同的地方，感受不同的文化</p>
+            
+            <div class="travel-gallery">
+                <div class="travel-item">
+                    <img src="天山.jpg" alt="天山天池">
+                    <div class="travel-desc">
+                        <h3>天山天池</h3>
+                        <p>位于新疆阜康市，是一个高山湖泊，湖水清澈见底，四周雪山环绕，景色壮丽。</p>
+                        <p><strong>时间：</strong>2022年夏季</p>
+                    </div>
+                </div>
+                
+                <div class="travel-item">
+                    <img src="火焰山0.jpg" alt="吐鲁番火焰山">
+                    <div class="travel-desc">
+                        <h3>吐鲁番火焰山</h3>
+                        <p>中国最热的地方，夏季气温可达47℃以上，因《西游记》而闻名。</p>
+                        <p><strong>时间：</strong>2021年暑假</p>
+                    </div>
+                </div>
+                
+                <div class="travel-item">
+                    <img src="伊利河谷.jpg" alt="伊犁河谷">
+                    <div class="travel-desc">
+                        <h3>伊犁河谷</h3>
+                        <p>新疆的"塞外江南"，草原辽阔，风景如画，尤其是那拉提草原令人心旷神怡。</p>
+                        <p><strong>时间：</strong>2020年春季</p>
+                    </div>
+                </div>
+                
+                <div class="travel-item">
+                    <img src="乌鲁木齐.png" alt="乌鲁木齐">
+                    <div class="travel-desc">
+                        <h3>乌鲁木齐</h3>
+                        <p>新疆的首府，现代化的城市中融合了多元民族文化，国际大巴扎是必去之地。</p>
+                        <p><strong>时间：</strong>2022年冬季</p>
+                    </div>
+                </div>
+                
+                <div class="travel-item">
+                    <img src="喀纳斯湖.jpg" alt="喀纳斯湖">
+                    <div class="travel-desc">
+                        <h3>喀纳斯湖</h3>
+                        <p>被誉为"人间仙境"，湖水随季节和天气变化颜色，神秘的湖怪传说更添神秘色彩。</p>
+                        <p><strong>时间：</strong>2023年秋季</p>
+                    </div>
+                </div>
+                
+                <div class="travel-item">
+                    <img src="塔村.jpeg" alt="敦煌莫高窟">
+                    <div class="travel-desc">
+                        <h3>阿克苏塔村&nbsp;</h3>
+                        <p>是南疆第一村&nbsp;</p>
+                        <p><strong>时间：2025</strong>年假期，特别适合玩儿</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>旅行感悟</h3>
+                <p>旅行让我看到了世界的多样性，感受到了不同地域的文化魅力。每一次旅行都是一次学习，让我更加珍惜自己的文化根源，同时也以开放的心态接纳不同的生活方式。</p>
+                <p>未来我希望能去更多的地方旅行，特别是西藏、云南，以及国外的土耳其、伊朗等地，继续探索这个多彩的世界。</p>
+            </div>
+        </section>
+
+        <!-- 留言板 -->
+        <section id="message" class="page">
+            <h2>留言板</h2>
+            <p class="subtitle">欢迎给我留言，我会尽快回复</p>
+            
+            <div class="message-form card">
+                <h3>发表留言</h3>
+                <form id="messageForm">
+                    <div class="form-group">
+                        <label for="name">姓名：</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">邮箱：</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">主题：</label>
+                        <select id="subject" name="subject">
+                            <option value="general">一般咨询</option>
+                            <option value="design">设计相关</option>
+                            <option value="travel">旅游相关</option>
+                            <option value="hometown">家乡相关</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">留言内容：</label>
+                        <textarea id="message" name="message" required placeholder="请在这里写下你的留言..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">提交留言</button>
+                </form>
+            </div>
+            
+            <div class="message-list">
+                <h3>最新留言</h3>
+                
+                <div class="message-item">
+                    <div class="message-header">
+                        <strong>吉各尔&nbsp;&nbsp;</strong> · <span>2024年10月15日</span> · <span class="message-tag">设计相关</span>
+                    </div>
+                    <p class="message-content">你好！看到你对网页设计很感兴趣，我也是学习设计的，有机会可以交流一下！</p>
+                </div>
+                
+                <div class="message-item">
+                    <div class="message-header">
+                        <strong>王明</strong> · <span>2023年10月10日</span> · <span class="message-tag">旅游相关</span>
+                    </div>
+                    <p class="message-content">你的旅游记录很棒！我也去过喀纳斯湖，秋天的景色确实美不胜收。</p>
+                </div>
+                
+                <div class="message-item">
+                    <div class="message-header">
+                        <strong>阿卜都艾则孜&nbsp;</strong> · <span>2023年10月5日</span> · <span class="message-tag">家乡相关</span>
+                    </div>
+                    <p class="message-content">同为喀什人，看到你对家乡的介绍感到非常亲切！希望有机会一起回喀什看看。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 登录 -->
+        <section id="login" class="page">
+            <div class="auth-container">
+                <div class="auth-form">
+                    <h2>登录</h2>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="login-email">邮箱或用户名：</label>
+                            <input type="text" id="login-email" name="login-email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="login-password">密码：</label>
+                            <input type="password" id="login-password" name="login-password" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" name="remember"> 记住我
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn">登录</button>
+                        
+                        <p style="margin-top: 20px; text-align: center;">
+                            还没有账户？ <a href="#register" class="nav-link" data-page="register">立即注册</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 注册 -->
+        <section id="register" class="page">
+            <div class="auth-container">
+                <div class="auth-form">
+                    <h2>注册</h2>
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="reg-name">姓名：</label>
+                            <input type="text" id="reg-name" name="reg-name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reg-email">邮箱：</label>
+                            <input type="email" id="reg-email" name="reg-email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reg-username">用户名：</label>
+                            <input type="text" id="reg-username" name="reg-username" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reg-password">密码：</label>
+                            <input type="password" id="reg-password" name="reg-password" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reg-confirm-password">确认密码：</label>
+                            <input type="password" id="reg-confirm-password" name="reg-confirm-password" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" name="agreement" required> 我同意网站服务条款
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn">注册</button>
+                        
+                        <p style="margin-top: 20px; text-align: center;">
+                            已有账户？ <a href="#login" class="nav-link" data-page="login">立即登录</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo" style="background: none; padding: 0;"><span>&nbsp;</span></div>
+            <p>阿克苏职业技术学院 · 纺织工程学院</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-weixin"></i></a>
+                <a href="#"><i class="fab fa-qq"></i></a>
+                <a href="#"><i class="fab fa-weibo"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+            
+            <p>© 2025 阿卜杜许库尔 个人主页. 保留所有权利.</p>
+            <p>学号: 88888888 | 电话: 138-8888-8888 | 邮箱: abdushukur@example.com</p>
+        </div>
+    </footer>
+
+    <script>
+        // 导航功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 移动端菜单切换
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                this.innerHTML = mainNav.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // 页面切换
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+            
+            // 初始化显示首页
+            showPage('home');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 获取目标页面
+                    const targetPage = this.getAttribute('data-page');
+                    
+                    // 更新活动导航链接
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 显示目标页面
+                    showPage(targetPage);
+                    
+                    // 移动端点击后关闭菜单
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+            });
+            
+            // 显示指定页面的函数
+            function showPage(pageId) {
+                // 隐藏所有页面
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // 显示目标页面
+                const targetPage = document.getElementById(pageId);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                }
+                
+                // 滚动到顶部
+                window.scrollTo(0, 0);
+            }
+            
+            // 表单提交处理
+            const messageForm = document.getElementById('messageForm');
+            if (messageForm) {
+                messageForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('留言已提交！感谢您的留言。');
+                    this.reset();
+                });
+            }
+            
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('登录功能为演示用途，实际功能需后端支持。');
+                    this.reset();
+                });
+            }
+            
+            const registerForm = document.getElementById('registerForm');
+            if (registerForm) {
+                registerForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const password = document.getElementById('reg-password').value;
+                    const confirmPassword = document.getElementById('reg-confirm-password').value;
+                    
+                    if (password !== confirmPassword) {
+                        alert('两次输入的密码不一致，请重新输入！');
+                        return;
+                    }
+                    
+                    alert('注册成功！欢迎加入。');
+                    this.reset();
+                    
+                    // 切换到登录页面
+                    showPage('login');
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    document.querySelector('a[data-page="login"]').classList.add('active');
+                });
+            }
+            
+            // 添加滚动效果
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.backgroundColor = 'rgba(44, 62, 80, 0.98)';
+                    header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.backgroundColor = 'var(--secondary-color)';
+                    header.style.boxShadow = 'var(--shadow)';
+                }
+            });
+            
+            // 添加卡片悬停效果增强
+            const cards = document.querySelectorAll('.card, .hobby-item, .travel-item, .scenic-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+                });
+            });
+            
+            // 初始化页面时添加一些动画
+            setTimeout(() => {
+                const heroImage = document.querySelector('.hero-image img');
+                if (heroImage) {
+                    heroImage.style.animation = 'float 3s ease-in-out infinite';
+                }
+                
+                // 为导航按钮添加图标动画
+                const navIcons = document.querySelectorAll('nav a i');
+                navIcons.forEach(icon => {
+                    icon.style.transition = 'transform 0.3s ease';
+                });
+                
+                // 为景区卡片添加延迟动画
+                const scenicCards = document.querySelectorAll('.scenic-card');
+                scenicCards.forEach((card, index) => {
+                    card.style.animationDelay = `${index * 0.1}s`;
+                    card.style.animation = 'fadeIn 0.5s ease forwards';
+                });
+            }, 500);
+            
+            // 为导航按钮添加鼠标悬停时图标动画
+            navLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    const icon = this.querySelector('i');
+                    if (icon) {
+                        icon.style.transform = 'scale(1.2) rotate(5deg)';
+                    }
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    const icon = this.querySelector('i');
+                    if (icon) {
+                        icon.style.transform = 'scale(1) rotate(0deg)';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
